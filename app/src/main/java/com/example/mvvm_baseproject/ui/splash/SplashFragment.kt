@@ -27,7 +27,8 @@ class SplashFragment : BaseFragment<FragmentSplashBinding>(R.layout.fragment_spl
         }
 
         binding.btnToHome.setOnClickListener {
-            appNavigation.openLoginToHomeScreen()
+            viewModel.testMergeObservable()
+            //viewModel.runCoroutine()
         }
     }
 }

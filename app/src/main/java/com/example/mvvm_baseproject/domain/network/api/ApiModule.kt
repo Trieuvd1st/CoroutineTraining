@@ -18,6 +18,7 @@ import okhttp3.ResponseBody
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Converter
 import retrofit2.Retrofit
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import java.io.File
 import java.lang.reflect.Type
@@ -36,12 +37,13 @@ class ApiModule {
 
     @Provides
     @Singleton
-    fun provideApiService(gson: Gson, client: OkHttpClient)
+    fun provideApiService(gson: Gson, client: OkHttpClient,)
             : ApiService {
         val retrofit = Retrofit.Builder()
             .baseUrl(Constants.ApiComponents.BASE_URL)
             .client(client)
             .addConverterFactory(GsonConverterFactory.create(gson))
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .build()
         return retrofit.create(ApiService::class.java)
     }
@@ -58,6 +60,7 @@ class ApiModule {
             .client(client)
             .addConverterFactory(NullOnEmptyConverterFactory())
             .addConverterFactory(GsonConverterFactory.create(gson))
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .build()
         return retrofit.create(ApiServiceNoAuth::class.java)
     }

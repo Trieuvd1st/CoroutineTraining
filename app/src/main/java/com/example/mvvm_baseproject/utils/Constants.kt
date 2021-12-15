@@ -15,6 +15,6 @@ object Constants {
     }
 
     object ApiComponents {
-        const val BASE_URL = "https://google.com"
+        const val BASE_URL = "https://fakestoreapi.com"
     }
 }
