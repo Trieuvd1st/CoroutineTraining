@@ -13,4 +13,8 @@ interface ApiServiceNoAuth {
     fun getProductById(
         @Query("") id: Int
     ): Observable<Product>
+
+    fun fgdsfsd(
+        @Query("") id: Int
+    ): Observable<Product>
 }
